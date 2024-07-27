@@ -1,15 +1,16 @@
-import Human
-from School import Class
+from human import Human
 from typing import List
-import Subject
+from subject import Subject
 
 
 class Teacher(Human):
-    teachers = {}
-    _homeroom_class: Class
+    teachers: dict = {}
+    dict_teachers: dict
+    _homeroom_class: "Class"
     _subjects: List[Subject]
 
-    def __init__(self, name, last_name, _subjects, _homeroom_class=None):
+    def __init__(self, name, last_name, _subjects, _homeroom_class=None, teachers: dict = {}):
+        self.teachers = teachers
         self.name = name
         self.last_name = last_name
 
@@ -21,7 +22,6 @@ class Teacher(Human):
             print(f'{self.name} {self.last_name} не является классным руководителем')
 
         self._subjects = _subjects
-        print(f'{self.name} {self.last_name} преподает {self._subjects}')
 
     def set_class(self, new_homeroom_class):
         self._homeroom_class = new_homeroom_class
@@ -37,3 +37,9 @@ class Teacher(Human):
     def __str__(self):
         return (f'{self.name} {self.last_name} is teaching {self._subjects}. {self.name} {self.last_name}'
                 f' is classroom teacher of {self._homeroom_class} class')
+
+    @staticmethod
+    def set_dict_teachers():
+        dict_teachers = Teacher.teachers
+        print(dict_teachers)
+        return dict_teachers

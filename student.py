@@ -1,9 +1,8 @@
-import Human
-from School import Class
+from human import Human
 
 
 class Student(Human):
-    _class: Class
+    _class: "Class"
     studentss = {}
 
     def __init__(self, name, last_name, group):

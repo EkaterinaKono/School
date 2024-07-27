@@ -1,9 +1,7 @@
 import csv
 from typing import List
-import Student
-import Teacher
-from Teacher import Teacher
-from Student import Student
+from teacher import Teacher
+from student import Student
 
 
 class Class(list):
@@ -12,25 +10,47 @@ class Class(list):
     _students: List["Student"]
     _homeroom_teacher: "Teacher"
 
-    def __init__(self, grade, letter, homeroom_teacher=None, students=[]):
-        super().__init__()
+    def __init__(self, grade, letter, _homeroom_teacher=None, _students=[]):
         self._students = []
+        self._homeroom_teacher = None
         self._grade = grade
         self._letter = letter
+        print(Teacher.teachers)
+        print("Hello world")
         for k in Teacher.teachers.keys():
+            print("Hello world")
             if (str(self._grade) + self._letter) == k:
                 self._homeroom_teacher = Teacher.teachers[k]
         for i, m in Student.studentss.items():
             if (str(self._grade) + self._letter) == m:
                 self._students.append(i)
-        studs = self._students
         print('Class initialising')
+        print(self._homeroom_teacher)
+        print(Teacher.teachers)
+
+    ''''@property
+    def _grade(self):
+        return self._grade
+
+    @_grade.setter
+    def _grade(self, new_grade):
+        self._grade = new_grade
+
+    @property
+    def _letter(self):
+        return self._letter
+
+    @_letter.setter
+    def _letter(self, new_letter):
+        self._letter = new_letter'''
 
     def __append__(self, new_student):
-        super().__append__(new_student)
+        #super().__append__(new_student)
+        super().append(new_student)
 
     def __remove__(self, student):
-        super().__remove__(student)
+        #super().__remove__(student)
+        super().remove(student)
 
     def __iter__(self):
         return iter(sorted(self._students))

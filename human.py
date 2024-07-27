@@ -20,3 +20,9 @@ class Human:
 
     def __lt__(self, other):
         return str(self) < str(other)
+
+    def __repr__(self):
+        return f'name: {self.name}, lastname: {self.last_name}'
+
+    def __str__(self):
+        return f'{self.name} {self.last_name}'
