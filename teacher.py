@@ -5,7 +5,7 @@ from subject import Subject
 
 class Teacher(Human):
     teachers: dict = {}
-    dict_teachers: dict
+    #dict_teachers: dict
     _homeroom_class: "Class"
     _subjects: List[Subject]
 
@@ -38,8 +38,8 @@ class Teacher(Human):
         return (f'{self.name} {self.last_name} is teaching {self._subjects}. {self.name} {self.last_name}'
                 f' is classroom teacher of {self._homeroom_class} class')
 
-    @staticmethod
-    def set_dict_teachers():
-        dict_teachers = Teacher.teachers
-        print(dict_teachers)
-        return dict_teachers
+   # @staticmethod
+    #def set_dict_teachers():
+        #dict_teachers = Teacher.teachers
+        #print(dict_teachers)
+        #return dict_teachers

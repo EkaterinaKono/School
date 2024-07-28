@@ -19,11 +19,6 @@ teacher2 = Teacher("Олег", "Сергеевич", ["Физика"], "7Б")
 print(teacher2)
 print(Teacher.teachers)
 
-v = Teacher.set_dict_teachers()
-
-print(v)
-type(v)
-
 
 class1 = Class(11, "А")
 print(class1)

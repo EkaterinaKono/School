@@ -15,18 +15,16 @@ class Class(list):
         self._homeroom_teacher = None
         self._grade = grade
         self._letter = letter
-        print(Teacher.teachers)
-        print("Hello world")
+        print(Teacher.teachers)       # выводит пустой словарь
         for k in Teacher.teachers.keys():
-            print("Hello world")
             if (str(self._grade) + self._letter) == k:
                 self._homeroom_teacher = Teacher.teachers[k]
         for i, m in Student.studentss.items():
             if (str(self._grade) + self._letter) == m:
                 self._students.append(i)
         print('Class initialising')
-        print(self._homeroom_teacher)
-        print(Teacher.teachers)
+        print(self._homeroom_teacher)     # выводит None
+        print(Teacher.teachers)     # выводит пустой словарь
 
     ''''@property
     def _grade(self):
@@ -67,6 +65,7 @@ class Class(list):
     def __str__(self):
         return (f'students of class {self._grade}{self._letter}: {self._students},'
                 f' classroom teacher of class {self._grade}{self._letter}: {self._homeroom_teacher}')
+        # метод __str__ не выводит студентов и преподавателя
 
     @staticmethod
     def write_csv():
