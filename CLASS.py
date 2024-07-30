@@ -2,6 +2,8 @@ import csv
 from typing import List
 from teacher import Teacher
 from student import Student
+from teacher import teachers
+from student import studentss
 
 
 class Class(list):
@@ -15,16 +17,13 @@ class Class(list):
         self._homeroom_teacher = None
         self._grade = grade
         self._letter = letter
-        print(Teacher.teachers)       # выводит пустой словарь
-        for k in Teacher.teachers.keys():
+        for k in teachers.keys():
             if (str(self._grade) + self._letter) == k:
-                self._homeroom_teacher = Teacher.teachers[k]
-        for i, m in Student.studentss.items():
+                self._homeroom_teacher = teachers[k]
+        for i, m in studentss.items():
             if (str(self._grade) + self._letter) == m:
                 self._students.append(i)
         print('Class initialising')
-        print(self._homeroom_teacher)     # выводит None
-        print(Teacher.teachers)     # выводит пустой словарь
 
     ''''@property
     def _grade(self):
@@ -43,11 +42,9 @@ class Class(list):
         self._letter = new_letter'''
 
     def __append__(self, new_student):
-        #super().__append__(new_student)
         super().append(new_student)
 
     def __remove__(self, student):
-        #super().__remove__(student)
         super().remove(student)
 
     def __iter__(self):
@@ -65,18 +62,19 @@ class Class(list):
     def __str__(self):
         return (f'students of class {self._grade}{self._letter}: {self._students},'
                 f' classroom teacher of class {self._grade}{self._letter}: {self._homeroom_teacher}')
-        # метод __str__ не выводит студентов и преподавателя
 
-    @staticmethod
-    def write_csv():
-        with open('students.csv', mode='w', encoding='utf-8') as filename:
+    def write_csv(self, filename: str):
+        with open(filename, mode="w", encoding="utf8") as filename:
             file_writer = csv.writer(filename, delimiter='\r', lineterminator='\r')
-            file_writer.writerow(['name last_name'])
-            file_writer.writerow(Student.studentss)
+            file_writer.writerow([f"Класс: {self._grade} {self._letter}"])
+            file_writer.writerow([f"Классный руководитель: {self._homeroom_teacher}"])
+            file_writer.writerow([" "])
+            file_writer.writerow(["Имя Фамилия"])
+            file_writer.writerow(self)
 
     @staticmethod
-    def read_csv():
-        with open('students.csv', newline='') as filename:
+    def read_csv(filename: str):
+        with open(filename, "r", encoding="utf8") as filename:
             reader = csv.reader(filename)
             for row in reader:
                 print(row)

@@ -1,0 +1,2 @@
+teachers: dict = {}
+studentss: dict = {}
