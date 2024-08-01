@@ -49,15 +49,15 @@ class Teacher(Human):
     def set_class(self, new_homeroom_class):
         teachers[new_homeroom_class] = teachers.pop(self._homeroom_class)
         self._homeroom_class = new_homeroom_class
-        print(f'new_homeroom_class {self._homeroom_class} for teacher {self.name} {self.last_name}')
+        print(f'{self.name} {self.last_name} теперь является классным руководителем в {self._homeroom_class}')
 
     def get_class(self):
         print(f'{self.name} {self.last_name} является классным руководителем в {self._homeroom_class}')
 
     def __repr__(self):
-        return (f'teacher: {self.name} {self.last_name}, subjects: {self._subjects},'
-                f' homeroom class: {self._homeroom_class}')
+        return (f'Учитель: {self.name} {self.last_name}, предмет: {self._subjects},'
+                f' классный руководитель в: {self._homeroom_class}')
 
     def __str__(self):
-        return (f'{self.name} {self.last_name} is teaching {self._subjects}. {self.name} {self.last_name}'
-                f' is classroom teacher of {self._homeroom_class} class')
+        return (f'{self.name} {self.last_name} преподает {self._subjects}. {self.name} {self.last_name}'
+                f' является классным руководителем в {self._homeroom_class} классе')

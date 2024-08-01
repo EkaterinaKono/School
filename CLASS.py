@@ -30,7 +30,6 @@ class Class(list):
         for i, m in studentss.items():
             if (str(self._grade) + self._letter) == m:
                 self._students.append(i)
-        print('Class initialising')
 
     def __append__(self, new_student):
         super().append(new_student)
@@ -47,12 +46,12 @@ class Class(list):
                 print(i)
 
     def __repr__(self):
-        return (f'class: {self._grade}{self._letter}, classroom teacher: {self._homeroom_teacher},'
-                f' students: {self._students}')
+        return (f'Класс: {self._grade}{self._letter}, классный руководитель: {self._homeroom_teacher},'
+                f' ученики: {self._students}')
 
     def __str__(self):
-        return (f'students of class {self._grade}{self._letter}: {self._students},'
-                f' classroom teacher of class {self._grade}{self._letter}: {self._homeroom_teacher}')
+        return (f'Ученики класса {self._grade}{self._letter}: {self._students},'
+                f' классный руководитель класса {self._grade}{self._letter}: {self._homeroom_teacher}')
 
     def write_csv(self, filename: str):
         with open(filename, mode="w", encoding="utf8") as filename:
