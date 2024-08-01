@@ -3,6 +3,9 @@ from School.teacher import Teacher
 from School.CLASS import Class
 from teacher import teachers
 from student import studentss
+from human import Human
+from human import ids
+from common import alphabet
 
 student1 = Student("Игорь", "Петров", "11А")
 print(student1)
@@ -75,3 +78,37 @@ print(class2)
 
 class2.write_csv("7Б.csv")
 class2.read_csv("7Б.csv")
+
+human1 = Human("Иван", "Петров", 1)
+human2 = Human("Ангелина", "Васина", 2)
+human3 = Human("Арсений", "Романов")
+
+print(human1)
+print(human2)
+print(human3)
+print(ids)
+human4 = Human("Дарья", "Малышева", 5)
+print(human4)
+print(ids)
+human5 = Human("Василий", "Гладилин")
+print(human5)
+print(ids)
+
+print(hash(human1))
+print(human3 > human4)
+print(human1.__repr__())
+
+
+dir(human1)
+
+class12 = Class(1, "А")
+print(class12)
+print()
+print(alphabet)
+print(ord("А"))
+
+student8 = Student("Михаил", "Корнеев", "11А")
+print(student8)
+
+teacher3 = Teacher("Александр", "Петрович", ["Биология"], "9Д")
+print(teacher3)

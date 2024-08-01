@@ -4,6 +4,7 @@ from teacher import Teacher
 from student import Student
 from teacher import teachers
 from student import studentss
+from common import alphabet
 
 
 class Class(list):
@@ -12,11 +13,17 @@ class Class(list):
     _students: List["Student"]
     _homeroom_teacher: "Teacher"
 
-    def __init__(self, grade, letter, _homeroom_teacher=None, _students=[]):
+    def __init__(self, grade: int, letter: str, _homeroom_teacher=None, _students=[]):
         self._students = []
         self._homeroom_teacher = None
-        self._grade = grade
-        self._letter = letter
+        if grade in range(1, 12):
+            self._grade = grade
+        else:
+            raise AttributeError("Номер класса должен быть от 1 до 11!")
+        if letter in alphabet:
+            self._letter = letter
+        else:
+            raise AttributeError("Буквой класса должна быть заглавная буква из русского алфавита!")
         for k in teachers.keys():
             if (str(self._grade) + self._letter) == k:
                 self._homeroom_teacher = teachers[k]
@@ -24,22 +31,6 @@ class Class(list):
             if (str(self._grade) + self._letter) == m:
                 self._students.append(i)
         print('Class initialising')
-
-    ''''@property
-    def _grade(self):
-        return self._grade
-
-    @_grade.setter
-    def _grade(self, new_grade):
-        self._grade = new_grade
-
-    @property
-    def _letter(self):
-        return self._letter
-
-    @_letter.setter
-    def _letter(self, new_letter):
-        self._letter = new_letter'''
 
     def __append__(self, new_student):
         super().append(new_student)

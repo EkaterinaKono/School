@@ -1,19 +1,27 @@
+from common import ids
+
+
 class Human:
     name: str
     last_name: str
     __id: int
-    ids = set()
 
-    def __init__(self, name, last_name, id: int = None):
-        self.name = name
-        self.last_name = last_name
+    def __init__(self, name: str, last_name: str, id: int = None):
+        if isinstance(name, str):
+            self.name = name
+        else:
+            raise AttributeError('Именем может быть только строка')
+        if isinstance(last_name, str):
+            self.last_name = last_name
+        else:
+            raise AttributeError('Фамилией может быть только строка')
         if id:
-            if id in Human.ids:
-                raise Exception('Переданный id уже существует!')
+            if id in ids:
+                raise AttributeError('Переданный id уже существует!')
             self.__id = id
         else:
-            self.__id = max(Human.ids) + 1
-        Human.ids.add(self.__id)
+            self.__id = max(ids) + 1
+        ids.add(self.__id)
 
     def __hash__(self):
         return hash(self.name + self.last_name)
